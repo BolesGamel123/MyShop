@@ -21,12 +21,8 @@ namespace MyShop.Web
                 builder.Configuration.GetConnectionString("DefaultConnection")
                 ));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-            {
-
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(4);
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddDefaultUI();
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+              .AddDefaultTokenProviders().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 

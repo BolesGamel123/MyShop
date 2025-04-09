@@ -1,10 +1,5 @@
 ﻿using MyShop.DataAccess.Data;
 using MyShop.Entities.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyShop.DataAccess.Implementation
 {
@@ -13,11 +8,13 @@ namespace MyShop.DataAccess.Implementation
         private readonly ApplicationDbContext _context;
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Category = new CategoryRepository(context);
             Product = new ProductRepository(context);
+            ShoppingCart = new ShoppingCartRepository(context);
         }
         public int Complete()
         {
