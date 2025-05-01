@@ -5,6 +5,7 @@ using MyShop.DataAccess.Data;
 using MyShop.DataAccess.Implementation;
 using MyShop.Entities.Repositories;
 using MyShop.Utilities;
+using Stripe;
 
 namespace MyShop.Web
 {
@@ -20,6 +21,9 @@ namespace MyShop.Web
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection")
                 ));
+
+            builder.Services.Configure<StripeData>(builder.Configuration.GetSection("stripe"));
+
 
             builder.Services.AddIdentity<IdentityUser, IdentityRole>()
               .AddDefaultTokenProviders().AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -44,6 +48,8 @@ namespace MyShop.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("stripe:Secretkey").Get<string>();
 
             app.UseAuthorization();
 
