@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyShop.DataAccess.Data;
 using MyShop.Entities.Models;
 using MyShop.Entities.Repositories;
 
@@ -48,7 +47,7 @@ namespace MyShop.Web.Areas.Admin.Controllers
             {
                 NotFound();
             }
-            var category = _unitOfWork.Category.FirstOrDefault(x=>x.Id==id);
+            var category = _unitOfWork.Category.FirstOrDefault(x => x.Id == id);
             return View(category);
         }
 
@@ -74,7 +73,7 @@ namespace MyShop.Web.Areas.Admin.Controllers
             {
                 NotFound();
             }
-            var category = _unitOfWork.Category.FirstOrDefault(x=>x.Id==id);
+            var category = _unitOfWork.Category.FirstOrDefault(x => x.Id == id);
             return View(category);
         }
 
