@@ -1,12 +1,13 @@
-﻿@model IEnumerable<Product>
-@{
-    ViewBag.PageTitle = "Product Management";
+﻿@{
+    ViewBag.PageTitle = "Products Management";
     ViewBag.CardTitle = "View Products";
-}
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
 
+}
 <div>
     <a class="btn btn-primary" href="/Admin/Product/Create">Create</a>
 </div>
+
 <br />
 <table id="mytable" class="table table-hover" width="100%">
     <thead class="text-bold">
@@ -20,9 +21,6 @@
     </thead>
 </table>
 
-
-
 @section Scripts {
-
     <script src="~/js/products.js"></script>
 }

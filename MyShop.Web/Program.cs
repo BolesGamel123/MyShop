@@ -34,6 +34,9 @@ namespace MyShop.Web
             builder.Services.AddSingleton<IEmailSender, EmailSender>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -51,7 +54,11 @@ namespace MyShop.Web
 
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("stripe:Secretkey").Get<string>();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapRazorPages();
             app.MapControllerRoute(

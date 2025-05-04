@@ -3,6 +3,8 @@
 @{
     ViewBag.PageTitle = "Category Management";
     ViewBag.CardTitle = "Edit Category";
+
+
 }
 
 <div class="row">
@@ -32,6 +34,12 @@
 </div>
 
 @section Scripts {
-
-    <partial name="_ValidationScriptsPartial" />
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        tinymce.init({
+        selector: '#mytextarea'
+        });
+    </script>
 }
